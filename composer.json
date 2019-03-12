@@ -1,0 +1,21 @@
+{
+    "name": "ayaalkaplin/yii2-rbac",
+    "description": "Role Based Access Controll for yii2",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"," rbac"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ayaal Kpalin",
+            "email": "uraankhayayaal@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ayaalkaplin\\rbac\\": ""
+        }
+    }
+}
