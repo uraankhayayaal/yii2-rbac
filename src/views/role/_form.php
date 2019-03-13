@@ -41,7 +41,7 @@ use yii\helpers\ArrayHelper;
                 <p class="switch">
                     <label>
                         Deny
-                        <input type="checkbox" name="<?= Html::getInputName($model, 'children'); ?>[<?= $permission['name'] ?>]" <?= $model->hasChild($model->name, $permission) ? 'checked' : ''; ?>>
+                        <input type="checkbox" name="<?= Html::getInputName($model, 'children'); ?>[<?= $permission['name'] ?>]" <?= $model->name == null ? '' : ($model->hasChild($model->name, $permission) ? 'checked' : ''); ?>>
                         <span class="lever"></span>
                         Allow
                     </label>

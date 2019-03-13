@@ -4,6 +4,7 @@ namespace ayaalkaplin\rbac\controllers;
 
 use Yii;
 use yii\web\Controller;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use ayaalkaplin\rbac\models\RoleForm;
 
@@ -17,7 +18,7 @@ class RoleController extends Controller
     {
         return [
             'access' => [
-                'class' => \yii\filters\AccessControl::className(),
+                'class' => AccessControl::className(),
                 'rules' => [
                     [
                         'allow' => true,

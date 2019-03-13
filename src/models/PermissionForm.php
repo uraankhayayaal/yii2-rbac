@@ -4,6 +4,9 @@ namespace ayaalkaplin\rbac\models;
 
 use Yii;
 use yii\base\Model;
+use yii\db\Query;
+use yii\data\ActiveDataProvider;
+use yii\rbac\Item;
 
 /**
  * ContactForm is the model behind the contact form.
@@ -33,8 +36,8 @@ class PermissionForm extends Model
     {
         $auth = Yii::$app->authManager;
 
-        $query = (new \yii\db\Query())->from($auth->itemTable)->where(['type' => \yii\rbac\Item::TYPE_PERMISSION]);
-        $dataProvider = new \yii\data\ActiveDataProvider([
+        $query = (new Query())->from($auth->itemTable)->where(['type' => Item::TYPE_PERMISSION]);
+        $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort' => [
                 'attributes' => ['name', 'description'],
@@ -51,7 +54,7 @@ class PermissionForm extends Model
     {
         $auth = Yii::$app->authManager;
 
-        $query = (new \yii\db\Query())->from($auth->itemTable);
+        $query = (new Query())->from($auth->itemTable);
 
         return $query->all();
     }

@@ -14,8 +14,8 @@ $this->title = 'Изменить пароль';
     ]); ?>
 
     <?php
-        $list = ArrayHelper::map(\backend\models\RoleForm::allAsArray(),'name','description');
-        $setted_roles = \backend\models\AssignmentForm::getUserAssignments($user->id);
+        $list = ArrayHelper::map(\ayaalkaplin\rbac\models\RoleForm::allAsArray(),'name','description');
+        $setted_roles = \ayaalkaplin\rbac\models\AssignmentForm::getUserAssignments($user->id);
         $setted_values = ArrayHelper::map($setted_roles, 'roleName', 'userId');
         $security = new \yii\base\Security();
     ?>

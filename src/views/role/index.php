@@ -71,11 +71,11 @@ $this->title = 'Роли';
                         'format' => 'raw',
                         'value' => function($model){
                             $permissionsAndRoles = '<p>Права</p>';
-                            foreach (\backend\models\RoleForm::getRolePermissions($model['name']) as $key => $permission) {
+                            foreach (\ayaalkaplin\rbac\models\RoleForm::getRolePermissions($model['name']) as $key => $permission) {
                                 $permissionsAndRoles .= '<div class="chip">'.$permission->description.'</div>';
                             }
                             $permissionsAndRoles .= '<p>Дочерние роли</p>';
-                            foreach (\backend\models\RoleForm::getChildRoles($model['name']) as $key => $roles) {
+                            foreach (\ayaalkaplin\rbac\models\RoleForm::getChildRoles($model['name']) as $key => $roles) {
                                 $permissionsAndRoles .= '<div class="chip">'.$roles->description.'</div>';
                             }
                             return $permissionsAndRoles;

@@ -10,7 +10,5 @@ class Module extends BaseModule
     
     public function init(){
         parent::init();
-
-        //$this->layout = '@vandor/ayaalkaplin/rbac/src/views/layouts/main';
     }
 }

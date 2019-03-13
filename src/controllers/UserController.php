@@ -5,7 +5,9 @@ namespace ayaalkaplin\rbac\controllers;
 use Yii;
 use ayaalkaplin\rbac\models\User;
 use ayaalkaplin\rbac\models\UserSearch;
+use ayaalkaplin\rbac\models\AssignmentForm;
 use yii\web\Controller;
+use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -19,7 +21,7 @@ class UserController extends Controller
     {
         return [
             'access' => [
-                'class' => \yii\filters\AccessControl::className(),
+                'class' => AccessControl::className(),
                 'rules' => [
                     [
                         'allow' => true,
@@ -65,7 +67,7 @@ class UserController extends Controller
 
     public function actionPermit($id)
     {
-        $model = new \backend\models\AssignmentForm();
+        $model = new AssignmentForm();
         $model->user_id = $id;
         
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {

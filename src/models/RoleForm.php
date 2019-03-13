@@ -4,6 +4,9 @@ namespace ayaalkaplin\rbac\models;
 
 use Yii;
 use yii\base\Model;
+use yii\db\Query;
+use yii\data\ActiveDataProvider;
+use yii\rbac\Item;
 
 /**
  * ContactForm is the model behind the contact form.
@@ -37,8 +40,8 @@ class RoleForm extends Model
     {
         $auth = Yii::$app->authManager;
 
-        $query = (new \yii\db\Query())->from($auth->itemTable)->where(['type' => \yii\rbac\Item::TYPE_ROLE]);
-        $dataProvider = new \yii\data\ActiveDataProvider([
+        $query = (new Query())->from($auth->itemTable)->where(['type' => Item::TYPE_ROLE]);
+        $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort' => [
                 'attributes' => ['name', 'description'],
@@ -86,8 +89,8 @@ class RoleForm extends Model
         $auth = Yii::$app->authManager;
         $role = $auth->createRole($this->name);
         $role->description = $this->description;
-        $this->updateChildren();
-        return $auth->add($role);
+        $auth->add($role);
+        return $this->updateChildren();
     }
 
     public function update($name)
@@ -96,8 +99,8 @@ class RoleForm extends Model
         $role = $auth->getRole($name);
         $role->name = $this->name;
         $role->description = $this->description;
-        $this->updateChildren();
-        return $auth->update($name, $role);
+        $auth->update($name, $role);
+        return $this->updateChildren();
     }
 
     static function getPermit($name)
@@ -176,7 +179,8 @@ class RoleForm extends Model
                 }
             }
         }else{
-            $this->removeChildren($this->name);
+            return $this->removeChildren($this->name);
         }
+        return true;
     }
 }

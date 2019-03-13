@@ -4,6 +4,7 @@ namespace ayaalkaplin\rbac\models;
 
 use Yii;
 use yii\base\Model;
+use common\models\User;
 
 class AssignmentForm extends Model
 {
@@ -13,7 +14,7 @@ class AssignmentForm extends Model
 	public function rules()
     {
     	return [
-            [['user_id'], 'exist', 'targetClass' => \common\models\User::className(), 'targetAttribute' => ['user_id' => 'id']],
+            [['user_id'], 'exist', 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
             [['user_roles'], 'each', 'rule' => ['string'], 'skipOnEmpty' => true],
     	];
     }
