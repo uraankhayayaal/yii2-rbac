@@ -27,10 +27,12 @@ use yii\helpers\ArrayHelper;
                 <th>Type</th>
                 <th>Access</th>
                 <th>Name</th>
+                <th>key</th>
             </tr>
         </thead>
         <thead>
         <?php foreach (\ayaalkaplin\rbac\models\PermissionForm::allRolesAndPermissions() as $key => $permission) { ?>
+        <?php if($model->name == $permission['name']) continue; ?>
         <tr>
             <td>
                 <?= ($permission['type'] == \yii\rbac\Item::TYPE_PERMISSION ? 'Permission' : ($permission['type'] == \yii\rbac\Item::TYPE_ROLE ? 'Role' : 'Another')); ?>
@@ -47,6 +49,9 @@ use yii\helpers\ArrayHelper;
             </td>
             <td>
                 <?= $permission['description'] ?>
+            </td>
+            <td>
+                <?= $permission['name'] ?>
             </td>
         </tr>
         <?php } ?>
