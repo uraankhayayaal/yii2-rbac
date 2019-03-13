@@ -21,7 +21,7 @@ class RoleController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['rbac_roles']
+                        'roles' => ['admin']
                     ]
                 ],
             ],

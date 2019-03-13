@@ -21,11 +21,21 @@ or add
 
 to the require section of your `composer.json` file.
 
+Models use yii2 DbManager class and required to run migration:
+
+```
+php yii migrate --migrationPath=@yii/rbac/migrations
+```
 
 Usage
 -----
 
-Once the extension is installed, simply use it in your code by  :
+Once the extension is installed, simply use it in your code by adding url on your navigation bar:
 
 ```php
-<?= \ayaalkaplin\rbac\AutoloadExample::widget(); ?>```
+Url::toRoute('/rbac/permission/index');
+Url::toRoute('/rbac/role/index');
+Url::toRoute('/rbac/user/index');
+```
+
+This controllers are allowed for `admin` role

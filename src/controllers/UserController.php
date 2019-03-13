@@ -23,7 +23,7 @@ class UserController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['rbac_users']
+                        'roles' => ['admin']
                     ]
                 ],
             ],
